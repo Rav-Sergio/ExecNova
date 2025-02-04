@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+void main() 
+
+{
+	std::string Formula;
+	int i, num = 1;
+
+	std::cout << "Escreve a Formula e termina com um ponto final.\n";
+	std::cin >> Formula; 
+
+	for (i = 0; i < Formula.size(); i++)
+	{
+
+		if (isupper(Formula[i]))
+		{
+			if (num == 0)
+			{
+				std::cout << " 1";
+
+			}
+			num = 0;
+			std::cout << "\n";
+
+		}
+		if (isdigit(Formula[i]) && num==0)
+		{
+			std::cout << " ";
+			num = num + 1;
+
+		}
+		if (Formula[i] == '.')
+		{
+			if (num == 0)
+			{
+				std::cout << " 1";
+
+			}
+		}
+		else
+		{
+			std::cout << Formula[i];
+		}
+
+	}
+
+}
