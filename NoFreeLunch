@@ -1,0 +1,83 @@
+#include <iostream>
+#include <algorithm>
+
+int i, NumAmigos, NumFix, NumEscolhidos[99];
+
+void CompararNum()
+
+{
+	int NumMaximo = 0;
+	bool encontrou = false;
+
+	for (i = 0; i < NumAmigos; i++)
+	{
+		if (NumEscolhidos[i] > NumMaximo && NumEscolhidos[i] <= NumFix)
+		{
+			NumMaximo = NumEscolhidos[i];
+			encontrou = true;
+		}
+	}
+
+	if (!encontrou)
+	{
+		std::cout << "No free lunch.\n";
+	}
+	else
+	{
+		std::cout << "O numero escolhido mais proximo e maior que o numero fixado e " << NumMaximo << " \n";
+	}
+}
+
+void NumFixado()
+
+{
+	do
+	{
+		std::cout << "Diz o numero fixado.\n";
+		std::cin >> NumFix;
+
+	} while (1 > NumFix || NumFix > 99);
+
+}
+
+void EscolherNum()
+
+{
+	for (i = 0; i < NumAmigos; i++)
+	{
+		do
+		{
+			std::cout << "Digite um numero entre 1 e 99.\n";
+			std::cin >> NumEscolhidos[i];
+
+			if (NumEscolhidos[i] >= 1 && NumEscolhidos[i] <= 99)
+			{
+				break;
+			}
+			else
+			{
+				std::cout << "Numero invalido, escreve um numero entre 1 e 99.\n";
+
+			}
+		} while (true);
+	}
+}
+
+void main()
+
+{
+
+
+	NumFixado();
+
+	do
+	{
+		std::cout << "Diz a quantidade de amigos.\n";
+		std::cin >> NumAmigos;
+
+	} while (1 > NumAmigos || NumAmigos > 10);
+
+	EscolherNum();
+	CompararNum();
+
+}
