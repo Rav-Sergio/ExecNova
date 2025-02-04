@@ -1,0 +1,67 @@
+#include <iostream>
+
+void main()
+
+{
+    
+    int km[1000], m[1000], i, c1, c2, viagens = 0;
+
+    std::cout << "---------- REGISTO DE CAMINHADAS ----------\n";
+
+    for (i = 0; i < 1000; i++)
+    {
+        do 
+        {
+            std::cout << "====== " << i + 1 << "º caminhada ======\n";
+
+            std::cout << "Kilometros: ";   
+            std::cin >> km[i];
+
+            std::cout << "Metros: ";
+            std::cin >> m[i];
+
+        } while (km[i] > 100 || km[i] < 0 || m[i] > 999 || m[i] < 0);
+
+        if (km[i] == 0 && m[i] == 0 && viagens > 1) 
+        {
+            break;
+
+        }
+        else if (km[i] == 0 && m[i] == 0 && viagens <= 1)
+        {
+            std::cout << "Nem caminhaste preguiçoso \n";
+            break;
+
+        }
+        else 
+        {
+            viagens = viagens + 1;
+
+        }
+    }
+
+    std::cout << "---Estatistica---\n";
+
+    for (i = 1; i < viagens; i++) 
+    {
+        c1 = (km[i - 1] * 1000) + m[i - 1];
+
+        c2 = (km[i] * 1000) + m[i];
+
+        if (c1 > c2)
+        {
+            std::cout << "BAIXO " << ((c1 - c2) / 1000) << "km e " << ((c1 - c2) % 1000) << "m \n";
+
+        }
+        else if (c1 < c2)
+        {
+            std::cout << "AUMENTO " << ((c2 - c1) / 1000) << "km  e " << ((c2 - c1) % 1000) << "m \n";
+
+        }
+        else
+        {
+            std::cout << "PATAMAR \n";
+
+        }
+    }
+}
