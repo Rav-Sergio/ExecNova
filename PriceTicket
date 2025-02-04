@@ -1,0 +1,95 @@
+#include <iostream>
+#include <math.h>
+
+void main()
+
+{
+
+	int Dias, Amigos;
+	float Preco, valor, decimas;
+
+	do
+
+	{
+
+		std::cout << "Escreve o preco da viagem em centimos";
+		std::cin >> Preco;
+
+		std::cout << "Escreve a quantidade de dias antecipados da viagem";
+		std::cin >> Dias;
+
+		std::cout << "Escreve a quantidade de amigos";
+		std::cin >> Amigos;
+
+	} while (Preco < 100 && Preco >100000);
+
+	Preco = Preco / 100;
+	Preco = Preco - Preco * 0.25;
+	decimas = Preco - trunc(Preco);
+
+	if (decimas > 0.5)
+	{
+		valor = trunc(Preco) + 1;
+
+	}
+	else
+	{
+		valor = trunc(Preco) + 0.5;
+
+	}
+
+	Preco = valor;
+
+	if ((Dias > 4) && (Dias < 9))
+	{
+		Preco = Preco - Preco * 0.4;
+		decimas = Preco - trunc(Preco);
+
+		if (decimas > 0.5)
+		{
+			valor = trunc(Preco) + 1;
+		}
+		else
+		{
+			valor = trunc(Preco) + 0.5;
+		}
+		Preco = valor;
+
+	}
+	else if (Dias > 8)
+	{
+		Preco = Preco - Preco * 0.65;
+		decimas = Preco - trunc(Preco);
+
+		if (decimas > 0.5)
+		{
+			valor = trunc(Preco) + 1;
+
+		}
+		else
+		{
+			valor = trunc(Preco) + 0.5;
+
+		}
+		Preco = valor;
+	}
+
+	if (Amigos > 3)
+	{
+		Preco = Preco - Preco * 0.5;
+		decimas = Preco - trunc(Preco);
+		if (decimas > 0.5)
+		{
+			valor = trunc(Preco) + 1;
+		}
+		else
+		{
+			valor = trunc(Preco) + 0.5;
+
+		}
+	}
+
+	Preco = valor * 100;
+	std::cout << " O preco total sera cerda de " << Preco << " centimos.\n";
+
+}
